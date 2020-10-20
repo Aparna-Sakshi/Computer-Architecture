@@ -1,0 +1,51 @@
+                                      Threshold Element
+x, y and z take value 0 or 1.
+0 mean false 1 means true.
+There are three operations and(.)  or(+)  complement(')
+0.0=0  0.1=0  1.0=0  1.1=1
+0+0=0  0+1=1  1+0=1  1+1=1
+0'=1  1'=0
+x.y is and(x,y). It is true when both x=y=1
+x+y is or(x,y).  It is true when at least one among x or y is true(1)
+Definition [a,b,c,T] is a threshold element. It outputs true(1) when ax+by+cz>=T.
+Here a,b,c are weights.
+In [a,b,c,d,e,f,T] a..f are weights for x,y,z,w,u and v respectively. T is cut-off.
+
+Example 1: [3,-5,9,7] is equivalent to (x+y').z.
+Reason x=1 y=1 z=1  3*1-5*1+9*1=7>=7 true
+x=0 y=0 z=1         3*0-5*0+9*1=9>=7 true
+x=0 y=1 z=1         3*0-5*1+9*1=4<7  false
+Example 2: Threshold element for x+y is [5,8,3].
+When x=y=0 0*5+0*8=0<3 false
+When x=0 y=1 0*5+8*1=8>=3 true
+Example 3:  What should be the value of T so that [5,8,T] realizes x+y?
+Let T is 6 hence x=1 y=0 gives 5*1+8*0=5<6 hence false.
+Let T is 0 hence x=0 y=0 gives 5*0+8*0=0>=0 hence true.
+Hence  1<=T<=5
+Example 4: What is T so that [5,-8,T] realizes x+y'?
+Let T=-2 Now x=y=1 gives 5*1-8*1=-3<-2 hence false
+Let T=-8 x=0 y=1 gives 5*0-8*1=-8<=-8 hence true
+Hence -7<=T<=-3
+Example 5: What is T so that [5,-8,T] realizes x.y'?
+Let T=0 Now x=0=y=0 gives 0>=0 hence true
+Let T=1 x=1 y=0 gives 5*1-8*0=5>=1 hence true.
+Let T=6 x=1 y=0 gives 5*1-8*0=5<6 hence false.
+Hence 1<=T<=5
+Example 6: What is T so that [5,7,10,T] realizes (x+y)z?
+Answer: 11<=T<=15
+Example 7: Write threshold element for xyz+w.
+Answer: [4,7,2,16,12]
+Example 8: Write threshold element for (xy'z+w)u.
+Answer: [4,-7,2,16,50,55]
+Hint: (xyz+w)u is [4,7,2,16,50,62]
+
+1: What is the value of 'g' so that [8,g,5] realizes x+y? 
+2: What is the value of 'g' so that [8,g,12] realizes x.y?
+3: What is T so that [5,7,10,T] realizes xy+z?           
+4: What is T so that [5,-7,10,T] realizes (x+y')z?       
+5: Write threshold element for xy+zw.                     
+6: What is the value of T so that [8,-4,T] realizes x+y'?
+7: What is T so that [4,-7,2,16,50,T] realizes (xy'z+w)u? 
+8: Write threshold element for (x+y+z).w+u.
+9: What is T so that [5,12,10,T] realizes xy+z?
+
